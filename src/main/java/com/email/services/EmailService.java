@@ -1,8 +1,6 @@
 package com.email.services;
 
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Optional;
 
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
@@ -24,6 +22,7 @@ public class EmailService {
 		this.emailSender = emailSender;
 	}
 
+	@SuppressWarnings("finally")
 	public EmailModel sendEmail(EmailModel emailModel) {
 		emailModel.setSendDateEmail(LocalDateTime.now());
 		try {
@@ -42,15 +41,6 @@ public class EmailService {
 			return emailRepository.save(emailModel);
 		}
 		
-	}
-
-	public List<EmailModel> listEmails() {
-		return emailRepository.findAll();
-	}
-
-	public EmailModel getEmail(Long id) {
-		Optional<EmailModel> optional = emailRepository.findById(id);
-		return optional.get();
 	}	
 
 }

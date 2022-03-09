@@ -2,6 +2,7 @@ package com.email.models;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,8 +20,7 @@ public class EmailModel implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
-	private Long id;
-	
+	private UUID id;	
 	private String ownerRef;
 	private String emailFrom;
 	private String emailTo;
@@ -34,7 +34,7 @@ public class EmailModel implements Serializable{
 	
 	public EmailModel() {}
 	
-	public EmailModel(Long id, String ownerRef, String emailFrom, String emailTo, String subject, String text,
+	public EmailModel(UUID id, String ownerRef, String emailFrom, String emailTo, String subject, String text,
 			LocalDateTime sendDateEmail, StatusEmail statusEmail) {
 		this.id = id;
 		this.ownerRef = ownerRef;
@@ -46,11 +46,11 @@ public class EmailModel implements Serializable{
 		this.statusEmail = statusEmail;
 	}
 
-	public Long getId() {
+	public UUID getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 
